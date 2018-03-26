@@ -8,6 +8,8 @@ import { Component, AfterViewInit, ViewChild } from '@angular/core';
   Upper-Case: {{upperCase}}
   <br/>
   Lower-Case: {{lowerCase}}
+  <br/>
+  Reserved-Case: {{getReversed(lowerCase)}}
   `,
   styles: []
 })
@@ -19,6 +21,14 @@ export class AppComponent implements AfterViewInit{
   textInput(event){
     this.upperCase = event.target.value.toUpperCase();
     this.lowerCase = event.target.value.toLowerCase();
+  }
+
+  getReversed(str: string){
+    let reversed = '';
+    for (let i=str.length-1;i>=0;i--){
+      reversed += str.substring(i,i+1);
+    }
+    return reversed;
   }
 
   ngAfterViewInit() {
